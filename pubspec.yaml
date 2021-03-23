@@ -34,6 +34,8 @@ dependencies:
   #bloc
   flutter_bloc: ^7.0.0-nullsafety.5
 
+  provider: ^5.0.0
+
   #firebase
   firebase_core: ^1.0.1
   firebase_auth: ^1.0.1
@@ -44,6 +46,8 @@ dependencies:
 
   #locator between bloc and ui
   get_it: ^6.0.0
+
+  another_flushbar: ^1.10.17
 
 
 dev_dependencies:
