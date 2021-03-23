@@ -42,6 +42,9 @@ dependencies:
   #DI
   injectable: ^1.2.2
 
+  #locator between bloc and ui
+  get_it: ^6.0.0
+
 
 dev_dependencies:
   flutter_test:

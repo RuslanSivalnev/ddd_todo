@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_to_do_ddd/injection.dart';
+import 'package:injectable/injectable.dart';
 
 void main() {
+  configureInjection(Environment.prod);
   runApp(MyApp());
 }
 
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Container(
-            child: Text('body'),
+            child: const Text('body'),
           ),
         ),
       ),
