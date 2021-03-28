@@ -29,7 +29,7 @@ dependencies:
   dartz: ^0.10.0-nullsafety.1
   freezed_annotation: ^0.14.1
 
-#  analyzer: ^1.1.0
+  #  analyzer: ^1.1.0
 
   #bloc
   flutter_bloc: ^7.0.0-nullsafety.5
@@ -54,6 +54,9 @@ dependencies:
   #gen ids
   uuid: ^3.0.2
 
+  #router solution
+  auto_route: ^1.0.2
+
 
 dev_dependencies:
   flutter_test:
@@ -62,18 +65,18 @@ dev_dependencies:
   #builder
   build_runner: ^1.6.0
 
-  #DI
+  #code generators
   injectable_generator: ^1.2.2
+  auto_route_generator: ^1.0.2
+
 
   #custom lint
   lint: ^1.3.0
 
 
   freezed: ^0.14.1
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
 
-# The following section is specific to Flutter.
+
 flutter:
 
   # The following line ensures that the Material Icons font is
