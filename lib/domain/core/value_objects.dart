@@ -15,6 +15,10 @@ abstract class ValueObject<T> {
     return value.fold((f) => throw UnexpectedValueError(f), id);
   }
 
+  Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
+    return value.fold((l) => left(l), (r) => right(unit));
+  }
+
   bool isValid() => value.isRight();
 
   Either<ValueFailure<T>, T> get value;
@@ -36,7 +40,7 @@ class UniqueId extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  factory UniqueId(String input) {
+  factory UniqueId() {
     return UniqueId._(right(const Uuid().v1()));
   }
 
