@@ -1,5 +1,6 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter_to_do_ddd/domain/core/value_objects.dart';
 import 'package:flutter_to_do_ddd/domain/notes/note.dart';
 import 'package:flutter_to_do_ddd/domain/notes/todo_item.dart';
@@ -20,16 +21,14 @@ abstract class NoteDto implements _$NoteDto {
     required String body,
     required int color,
     required List<TodoItemDto> todos,
-    required dynamic serverTimeStamp,
+    @ServerTimestampConverter() required FieldValue serverTimeStamp,
   }) = _NoteDto;
-
 
   Note toDomain() {
     return Note(
-      id: UniqueId.fromUniqueString(this.id),
+      id: UniqueId.fromUniqueString(this.id!),
       body: NoteBody(body),
-      // color: NoteColor(colors)
-      color: NoteColor(NoteColor.predefinedColors[0]),
+      color: NoteColor(Color(color)),
       todos: List3(todos.map((dto) => dto.toDomain()).toImmutableList()),
     );
   }
@@ -38,21 +37,30 @@ abstract class NoteDto implements _$NoteDto {
     return NoteDto(
       id: note.id.getOrCrash(),
       body: note.body.getOrCrash(),
-      color: note.color
-          .getOrCrash()
-          .value,
+      color: note.color.getOrCrash().value,
       todos: note.todos.getOrCrash().map((todoItem) => TodoItemDto.fromDomain(todoItem)).asList(),
-      serverTimeStamp: FieldValue.serverTimestamp() ?? DateTime.now(),
+      serverTimeStamp: FieldValue.serverTimestamp(),
     );
   }
 
   factory NoteDto.fromJson(Map<String, dynamic> json) => _$NoteDtoFromJson(json);
 
-  factory NoteDto.fromFirestore(DocumentSnapshot doc){
+  factory NoteDto.fromFirestore(DocumentSnapshot doc) {
     return NoteDto.fromJson(doc.data()!).copyWith(id: doc.id);
   }
 }
 
+class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {
+  const ServerTimestampConverter();
+
+  @override
+  FieldValue fromJson(Object json) {
+    return FieldValue.serverTimestamp();
+  }
+
+  @override
+  Object toJson(FieldValue fieldValue) => fieldValue;
+}
 
 @freezed
 abstract class TodoItemDto implements _$TodoItemDto {
@@ -74,7 +82,7 @@ abstract class TodoItemDto implements _$TodoItemDto {
 
   TodoItem toDomain() {
     return TodoItem(
-      id: UniqueId.fromUniqueString(this.id),
+      id: UniqueId.fromUniqueString(id),
       name: TodoName(name),
       done: done,
     );

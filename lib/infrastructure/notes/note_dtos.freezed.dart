@@ -25,7 +25,7 @@ class _$NoteDtoTearOff {
       required String body,
       required int color,
       required List<TodoItemDto> todos,
-      required dynamic serverTimeStamp}) {
+      @ServerTimestampConverter() required FieldValue serverTimeStamp}) {
     return _NoteDto(
       id: id,
       body: body,
@@ -50,7 +50,8 @@ mixin _$NoteDto {
   String get body => throw _privateConstructorUsedError;
   int get color => throw _privateConstructorUsedError;
   List<TodoItemDto> get todos => throw _privateConstructorUsedError;
-  dynamic get serverTimeStamp => throw _privateConstructorUsedError;
+  @ServerTimestampConverter()
+  FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -66,7 +67,7 @@ abstract class $NoteDtoCopyWith<$Res> {
       String body,
       int color,
       List<TodoItemDto> todos,
-      dynamic serverTimeStamp});
+      @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
 /// @nodoc
@@ -105,7 +106,7 @@ class _$NoteDtoCopyWithImpl<$Res> implements $NoteDtoCopyWith<$Res> {
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as FieldValue,
     ));
   }
 }
@@ -120,7 +121,7 @@ abstract class _$NoteDtoCopyWith<$Res> implements $NoteDtoCopyWith<$Res> {
       String body,
       int color,
       List<TodoItemDto> todos,
-      dynamic serverTimeStamp});
+      @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
 /// @nodoc
@@ -160,7 +161,7 @@ class __$NoteDtoCopyWithImpl<$Res> extends _$NoteDtoCopyWithImpl<$Res>
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as FieldValue,
     ));
   }
 }
@@ -174,7 +175,7 @@ class _$_NoteDto extends _NoteDto {
       required this.body,
       required this.color,
       required this.todos,
-      required this.serverTimeStamp})
+      @ServerTimestampConverter() required this.serverTimeStamp})
       : super._();
 
   factory _$_NoteDto.fromJson(Map<String, dynamic> json) =>
@@ -190,7 +191,8 @@ class _$_NoteDto extends _NoteDto {
   @override
   final List<TodoItemDto> todos;
   @override
-  final dynamic serverTimeStamp;
+  @ServerTimestampConverter()
+  final FieldValue serverTimeStamp;
 
   @override
   String toString() {
@@ -236,11 +238,12 @@ class _$_NoteDto extends _NoteDto {
 
 abstract class _NoteDto extends NoteDto {
   const factory _NoteDto(
-      {@JsonKey(ignore: true) String? id,
-      required String body,
-      required int color,
-      required List<TodoItemDto> todos,
-      required dynamic serverTimeStamp}) = _$_NoteDto;
+          {@JsonKey(ignore: true) String? id,
+          required String body,
+          required int color,
+          required List<TodoItemDto> todos,
+          @ServerTimestampConverter() required FieldValue serverTimeStamp}) =
+      _$_NoteDto;
   const _NoteDto._() : super._();
 
   factory _NoteDto.fromJson(Map<String, dynamic> json) = _$_NoteDto.fromJson;
@@ -255,7 +258,8 @@ abstract class _NoteDto extends NoteDto {
   @override
   List<TodoItemDto> get todos => throw _privateConstructorUsedError;
   @override
-  dynamic get serverTimeStamp => throw _privateConstructorUsedError;
+  @ServerTimestampConverter()
+  FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NoteDtoCopyWith<_NoteDto> get copyWith =>
