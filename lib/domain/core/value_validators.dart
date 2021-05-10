@@ -33,7 +33,7 @@ Either<ValueFailure<String>, String> validateMaxStringLength({required String in
 }
 
 Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
-  if (input.isEmpty) {
+  if (input.isNotEmpty) {
     return right(input);
   } else {
     return left(ValueFailure.empty(failedValue: input));

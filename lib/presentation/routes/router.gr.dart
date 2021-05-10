@@ -5,27 +5,50 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
+import 'package:flutter/cupertino.dart' as _i7;
+import 'package:flutter/material.dart' as _i2;
 
-import '../sign_in/sign_in_page.dart' as _i3;
-import '../splash/splash_page.dart' as _i2;
+import '../../domain/notes/note.dart' as _i8;
+import '../notes/note_form/note_form_page.dart' as _i6;
+import '../notes/notes_overview/notes_overview_page.dart' as _i5;
+import '../sign_in/sign_in_page.dart' as _i4;
+import '../splash/splash_page.dart' as _i3;
 
 class AppRouter extends _i1.RootStackRouter {
-  AppRouter();
+  AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
+      : super(navigatorKey);
 
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
-    SplashPageRoute.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i2.SplashPage());
+    SplashPageRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i3.SplashPage());
     },
-    SignInPageRoute.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i3.SignInPage());
+    SignInPageRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i4.SignInPage());
+    },
+    NotesOverviewPageRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i5.NotesOverviewPage());
+    },
+    NoteFormPageRoute.name: (routeData) {
+      final args = routeData.argsAs<NoteFormPageRouteArgs>(
+          orElse: () => const NoteFormPageRouteArgs());
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i6.NoteFormPage(key: args.key, editedNote: args.editedNote),
+          fullscreenDialog: true);
     }
   };
 
   @override
   List<_i1.RouteConfig> get routes => [
         _i1.RouteConfig(SplashPageRoute.name, path: '/'),
-        _i1.RouteConfig(SignInPageRoute.name, path: '/sign-in-page')
+        _i1.RouteConfig(SignInPageRoute.name, path: '/sign-in-page'),
+        _i1.RouteConfig(NotesOverviewPageRoute.name,
+            path: '/notes-overview-page'),
+        _i1.RouteConfig(NoteFormPageRoute.name, path: '/note-form-page')
       ];
 }
 
@@ -39,4 +62,27 @@ class SignInPageRoute extends _i1.PageRouteInfo {
   const SignInPageRoute() : super(name, path: '/sign-in-page');
 
   static const String name = 'SignInPageRoute';
+}
+
+class NotesOverviewPageRoute extends _i1.PageRouteInfo {
+  const NotesOverviewPageRoute() : super(name, path: '/notes-overview-page');
+
+  static const String name = 'NotesOverviewPageRoute';
+}
+
+class NoteFormPageRoute extends _i1.PageRouteInfo<NoteFormPageRouteArgs> {
+  NoteFormPageRoute({_i7.Key? key, _i8.Note? editedNote})
+      : super(name,
+            path: '/note-form-page',
+            args: NoteFormPageRouteArgs(key: key, editedNote: editedNote));
+
+  static const String name = 'NoteFormPageRoute';
+}
+
+class NoteFormPageRouteArgs {
+  const NoteFormPageRouteArgs({this.key, this.editedNote});
+
+  final _i7.Key? key;
+
+  final _i8.Note? editedNote;
 }

@@ -12,9 +12,14 @@ class NoteFormState with _$NoteFormState {
       }) = _NoteFormState;
 
   factory NoteFormState.initial() => NoteFormState(
-      note: Note.empty(),
-      showErrorMessages: false,
-      isSaving: false,
-      isEditing: false,
-      saveFailureOrSuccessOption: none());
+        note: Note.empty(),
+        showErrorMessages: false,
+        isSaving: false,
+        isEditing: false,
+        saveFailureOrSuccessOption: none(),
+
+        //error example call to note form page need to change listener
+        // saveFailureOrSuccessOption: some(left(const NoteFailure.insufficientPermissions())),
+
+      );
 }

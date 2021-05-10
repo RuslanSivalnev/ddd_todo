@@ -93,6 +93,7 @@ class __$AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_AppUser implements _AppUser {
   const _$_AppUser({required this.id});
 

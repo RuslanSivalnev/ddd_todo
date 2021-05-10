@@ -46,6 +46,8 @@ dependencies:
   #rx dart
   rxdart: ^0.26.0
 
+  flutter_hooks: ^0.16.0
+
   #DI
   injectable: ^1.2.2
 
@@ -59,7 +61,7 @@ dependencies:
   uuid: ^3.0.4
 
   #router solution
-  auto_route: ^1.0.2
+  auto_route: ^2.0.2
 
   #kotlin list features
   kt_dart: ^0.9.0
@@ -73,11 +75,11 @@ dev_dependencies:
     sdk: flutter
 
   #builder
-  build_runner: ^1.6.0
+  build_runner: ^2.0.1
 
   #code generators
   injectable_generator: ^1.2.2
-  auto_route_generator: ^1.0.2
+  auto_route_generator: ^2.0.1
 
 
   #custom lint
