@@ -25,7 +25,7 @@ class _$NoteDtoTearOff {
       required String body,
       required int color,
       required List<TodoItemDto> todos,
-      @ServerTimestampConverter() required FieldValue serverTimeStamp}) {
+      @ServerTimestampConverter() required dynamic serverTimeStamp}) {
     return _NoteDto(
       id: id,
       body: body,
@@ -51,7 +51,7 @@ mixin _$NoteDto {
   int get color => throw _privateConstructorUsedError;
   List<TodoItemDto> get todos => throw _privateConstructorUsedError;
   @ServerTimestampConverter()
-  FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
+  dynamic get serverTimeStamp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -67,7 +67,7 @@ abstract class $NoteDtoCopyWith<$Res> {
       String body,
       int color,
       List<TodoItemDto> todos,
-      @ServerTimestampConverter() FieldValue serverTimeStamp});
+      @ServerTimestampConverter() dynamic serverTimeStamp});
 }
 
 /// @nodoc
@@ -106,7 +106,7 @@ class _$NoteDtoCopyWithImpl<$Res> implements $NoteDtoCopyWith<$Res> {
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp // ignore: cast_nullable_to_non_nullable
-              as FieldValue,
+              as dynamic,
     ));
   }
 }
@@ -121,7 +121,7 @@ abstract class _$NoteDtoCopyWith<$Res> implements $NoteDtoCopyWith<$Res> {
       String body,
       int color,
       List<TodoItemDto> todos,
-      @ServerTimestampConverter() FieldValue serverTimeStamp});
+      @ServerTimestampConverter() dynamic serverTimeStamp});
 }
 
 /// @nodoc
@@ -161,13 +161,14 @@ class __$NoteDtoCopyWithImpl<$Res> extends _$NoteDtoCopyWithImpl<$Res>
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp // ignore: cast_nullable_to_non_nullable
-              as FieldValue,
+              as dynamic,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_NoteDto extends _NoteDto {
   const _$_NoteDto(
       {@JsonKey(ignore: true) this.id,
@@ -191,7 +192,7 @@ class _$_NoteDto extends _NoteDto {
   final List<TodoItemDto> todos;
   @override
   @ServerTimestampConverter()
-  final FieldValue serverTimeStamp;
+  final dynamic serverTimeStamp;
 
   @override
   String toString() {
@@ -241,7 +242,7 @@ abstract class _NoteDto extends NoteDto {
           required String body,
           required int color,
           required List<TodoItemDto> todos,
-          @ServerTimestampConverter() required FieldValue serverTimeStamp}) =
+          @ServerTimestampConverter() required dynamic serverTimeStamp}) =
       _$_NoteDto;
   const _NoteDto._() : super._();
 
@@ -258,7 +259,7 @@ abstract class _NoteDto extends NoteDto {
   List<TodoItemDto> get todos => throw _privateConstructorUsedError;
   @override
   @ServerTimestampConverter()
-  FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
+  dynamic get serverTimeStamp => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NoteDtoCopyWith<_NoteDto> get copyWith =>

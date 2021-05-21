@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_to_do_ddd/application/notes/note_form/note_form_bloc.dart';
 import 'package:flutter_to_do_ddd/domain/notes/note.dart';
+import 'package:flutter_to_do_ddd/presentation/notes/note_form/widgets/body_field_widget.dart';
+import 'package:flutter_to_do_ddd/presentation/notes/note_form/widgets/color_field_widget.dart';
 import 'package:flutter_to_do_ddd/presentation/routes/router.gr.dart';
 
 import '../../../injection.dart';
@@ -34,8 +36,8 @@ class NoteFormPage extends StatelessWidget {
                     ),
                   ).show(context);
                 },
-                (_) => {
-                  AutoRouter.of(context).popUntil((route) => route.settings.name == NoteFormPageRoute.name),
+                (_) {
+                  AutoRouter.of(context).pop();
                 },
               );
             },
@@ -112,6 +114,22 @@ class NoteFormPageScaffold extends StatelessWidget {
             },
           )
         ],
+      ),
+      body: BlocBuilder<NoteFormBloc, NoteFormState>(
+        buildWhen: (p, c) => p.showErrorMessages != c.showErrorMessages,
+        builder: (context, state) {
+          return Form(
+            autovalidate: state.showErrorMessages,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const BodyField(),
+                  const ColorFieldWidget(),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

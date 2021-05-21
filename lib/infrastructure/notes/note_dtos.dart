@@ -16,12 +16,13 @@ part 'note_dtos.g.dart';
 abstract class NoteDto implements _$NoteDto {
   const NoteDto._();
 
+  @JsonSerializable(explicitToJson: true)
   const factory NoteDto({
     @JsonKey(ignore: true) String? id,
     required String body,
     required int color,
     required List<TodoItemDto> todos,
-    @ServerTimestampConverter() required FieldValue serverTimeStamp,
+    @ServerTimestampConverter() required dynamic serverTimeStamp,
   }) = _NoteDto;
 
   Note toDomain() {
@@ -45,8 +46,11 @@ abstract class NoteDto implements _$NoteDto {
 
   factory NoteDto.fromJson(Map<String, dynamic> json) => _$NoteDtoFromJson(json);
 
-  factory NoteDto.fromFirestore(DocumentSnapshot doc) {
-    return NoteDto.fromJson(doc.data()!).copyWith(id: doc.id);
+  factory NoteDto.fromFirestore(QueryDocumentSnapshot doc) {
+    return NoteDto.fromJson(doc.data()).copyWith(
+      id: doc.id,
+      serverTimeStamp: DateTime.now().toString(),
+    );
   }
 }
 
