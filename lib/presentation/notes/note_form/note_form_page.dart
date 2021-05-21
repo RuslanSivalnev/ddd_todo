@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_to_do_ddd/application/notes/note_form/note_form_bloc.dart';
 import 'package:flutter_to_do_ddd/domain/notes/note.dart';
+import 'package:flutter_to_do_ddd/presentation/notes/note_form/widgets/add_todo_tile_widgets.dart';
 import 'package:flutter_to_do_ddd/presentation/notes/note_form/widgets/body_field_widget.dart';
 import 'package:flutter_to_do_ddd/presentation/notes/note_form/widgets/color_field_widget.dart';
-import 'package:flutter_to_do_ddd/presentation/routes/router.gr.dart';
 
 import '../../../injection.dart';
 
@@ -125,6 +125,7 @@ class NoteFormPageScaffold extends StatelessWidget {
                 children: [
                   const BodyField(),
                   const ColorFieldWidget(),
+                  const AddTodoTileWidgets(),
                 ],
               ),
             ),
