@@ -67,6 +67,13 @@ dependencies:
   kt_dart: ^0.9.0
 
 
+  #scroll to items for delete
+  flutter_slidable: ^0.6.0
+
+  #dragondrop animation
+  implicitly_animated_reorderable_list: ^0.4.0
+
+
   json_annotation: ^4.0.1
 
 

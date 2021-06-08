@@ -4,8 +4,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_to_do_ddd/application/notes/note_form/note_form_bloc.dart';
 import 'package:flutter_to_do_ddd/domain/notes/value_object.dart';
 
-class BodyField extends HookWidget {
-  const BodyField({
+class BodyFieldWidget extends HookWidget {
+  const BodyFieldWidget({
     Key? key,
   }) : super(key: key);
 

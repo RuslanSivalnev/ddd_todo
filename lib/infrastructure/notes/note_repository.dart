@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_to_do_ddd/domain/notes/i_note_repository.dart';
 import 'package:flutter_to_do_ddd/domain/notes/note.dart';
 import 'package:flutter_to_do_ddd/domain/notes/note_failure.dart';

@@ -30,7 +30,7 @@ class CriticalFailureDisplayWidget extends StatelessWidget {
               children: [
                 const Icon(Icons.mail),
                 const SizedBox(width: 4,),
-                Text('I need help')
+                const Text('I need help')
               ],
             ),
           )
